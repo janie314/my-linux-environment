@@ -1,0 +1,15 @@
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+SyslogFacility AUTHPRIV
+PermitRootLogin no
+PubkeyAuthentication yes
+AuthorizedKeysFile	.ssh/authorized_keys
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+X11Forwarding no
+PrintMotd no
+AllowUsers gwen janie git
+Subsystem sftp /usr/lib64/misc/sftp-server
+
+Include /etc/ssh/sshd_config.d/*.conf

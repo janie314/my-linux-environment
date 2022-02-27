@@ -1,0 +1,39 @@
+[{
+  "tags": "dnf",
+  "block": [
+    {
+      "name": "Install EPEL",
+      "ansible.builtin.package": {
+        "name": [
+          "epel-release"
+        ],
+        "state": "latest"
+      },
+      "become": "yes",
+      "when": "ansible_facts['distribution']|lower == 'rocky'"
+    },
+    {
+      "name": "Install DNF packages",
+      "ansible.builtin.package": {
+        "name": [
+          "caddy",
+          "ed",
+          "zsh",
+          "git",
+          "kitty",
+          "sqlite",
+          "pandoc",
+          "rsync",
+          "exa",
+          "tar",
+          "tmux",
+          "unzip",
+          "vim"
+        ],
+        "state": "latest"
+      },
+      "become": "yes",
+      "when": "ansible_facts['os_family']|lower == 'redhat'"
+    }
+  ]
+}]

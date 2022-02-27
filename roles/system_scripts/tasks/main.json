@@ -1,0 +1,18 @@
+[{
+  "tags": "update_scripts",
+  "block": [
+    {
+      "name": "Install rmoldkernel",
+      "ansible.builtin.copy": {
+        "src": "rmoldkernel",
+        "dest": "/usr/local/bin/rmoldkernel",
+        "owner": "root",
+        "group": "root",
+        "mode": "0755",
+        "backup": "yes"
+      },
+      "become": "yes",
+      "when": "ansible_facts['os_family']|lower == 'redhat'"
+    }
+  ]
+}]

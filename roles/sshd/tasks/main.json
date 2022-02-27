@@ -1,0 +1,69 @@
+[{
+  "tags": "sshd",
+  "block": [
+    {
+      "name": "create /etc/ssh/sshd_config.d",
+      "ansible.builtin.file": {
+        "path": "/etc/ssh/sshd_config.d",
+        "state": "directory"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "create /etc/ssh/sshd_config.d/dummy.conf",
+      "ansible.builtin.copy": {
+        "src": "dummy.conf",
+        "dest": "/etc/ssh/sshd_config.d/dummy.conf",
+        "owner": "root",
+        "group": "root",
+        "mode": "0755",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install sshd_config",
+      "ansible.builtin.copy": {
+        "src": "sshd_config_rhel",
+        "dest": "/etc/ssh/sshd_config",
+        "owner": "root",
+        "group": "root",
+        "mode": "0600",
+        "backup": "yes"
+      },
+      "become": "yes",
+      "register": "sshdconf",
+      "when": [
+        "'servers' in group_names",
+        "ansible_facts['os_family']|lower == 'redhat'"
+      ]
+    },
+    {
+      "name": "Install sshd_config",
+      "ansible.builtin.copy": {
+        "src": "sshd_config_gentoo",
+        "dest": "/etc/ssh/sshd_config",
+        "owner": "root",
+        "group": "root",
+        "mode": "0600",
+        "backup": "yes"
+      },
+      "become": "yes",
+      "register": "sshdconf",
+      "when": [
+        "'servers' in group_names",
+        "ansible_facts['os_family']|lower == 'gentoo'"
+      ]
+    },
+    {
+      "name": "Restart sshd if config changed.",
+      "ansible.builtin.service": {
+        "name": "sshd",
+        "state": "restarted",
+        "enabled": "yes"
+      },
+      "when": "sshdconf.changed",
+      "become": "yes"
+    }
+  ]
+}]

@@ -1,0 +1,13 @@
+#!/usr/bin/env -S deno run
+import { readAll } from "https://deno.land/std@0.177.1/streams/read_all.ts";
+try {
+  const bytes = await readAll(Deno.stdin);
+  console.table(
+    JSON.parse(
+      new TextDecoder().decode(bytes),
+    ),
+  );
+} catch {
+  console.error("bad...");
+  Deno.exit(1);
+}

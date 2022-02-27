@@ -1,0 +1,81 @@
+[{
+  "tags": "av",
+  "block": [
+    {
+      "name": "Create a/v groups to janie",
+      "ansible.builtin.user": {
+        "name": "janie",
+        "groups": [
+          "audio",
+          "video"
+        ],
+        "append": true
+      },
+      "become": "yes",
+      "when": "ansible_facts['os_family']|lower == 'gentoo'"
+    },
+    {
+      "name": "Install light",
+      "ansible.builtin.copy": {
+        "src": "light",
+        "dest": "/usr/local/bin/light",
+        "owner": "root",
+        "group": "root",
+        "mode": "0755",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install stereo",
+      "ansible.builtin.copy": {
+        "src": "stereo",
+        "dest": "/usr/local/bin/stereo",
+        "owner": "root",
+        "group": "root",
+        "mode": "0755",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install vol",
+      "ansible.builtin.copy": {
+        "src": "vol",
+        "dest": "/usr/local/bin/vol",
+        "owner": "root",
+        "group": "root",
+        "mode": "0755",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install greetd config",
+      "ansible.builtin.copy": {
+        "src": "greetd.toml",
+        "dest": "/etc/greetd/config.toml",
+        "owner": "root",
+        "group": "root",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "when": "ansible_facts['os_family']|lower == 'gentoo'",
+      "become": "yes"
+    },
+
+    {
+      "name": "Install sway config",
+      "ansible.builtin.copy": {
+        "src": "sway",
+        "dest": "/home/janie/.config/sway/config",
+        "owner": "janie",
+        "group": "janie",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes",
+      "when": "ansible_facts['os_family']|lower == 'gentoo'"
+    }
+  ]
+}]

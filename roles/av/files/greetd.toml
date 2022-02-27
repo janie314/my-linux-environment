@@ -1,0 +1,10 @@
+[terminal]
+vt = 7
+[default_session]
+command = "tuigreet --cmd /usr/local/bin/sway-run"
+user = "greetd"
+[initial_session]
+command = "/usr/local/bin/sway-run"
+user = "janie"
+# command = "/home/janie/gitlab/gnuplex/gnuplex"
+# user = "janie"

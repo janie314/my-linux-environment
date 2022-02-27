@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+if [[ $# -ne 1 ]]
+then
+	echo "Usage: ntpq [ ntp_host ]"
+else
+	date -d@$((0x$((perl -e'print"1B","0"x95' | xxd -r -p; sleep 1) | nc -u "$1" 123 | tail -c+41 | head -c4 | xxd -p)-64#23GDW0))
+fi

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Jane's Server Update Playbook",
+    "hosts": "servers",
+    "tasks": [
+      {
+        "name": "reboot",
+        "ansible.builtin.reboot": "",
+        "become": "yes"
+      }
+    ]
+  }
+]

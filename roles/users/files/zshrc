@@ -1,0 +1,132 @@
+# if not running interactively, don't do anything so scp works correctly
+[[ $- == *i* ]] || return
+
+# shell settings
+set -o vi
+setopt appendhistory
+setopt RM_STAR_SILENT
+setopt PROMPT_SUBST
+setopt BASH_AUTO_LIST
+export PS1='%B%F{cyan}%n@%M %~%b%f%B%F{magenta}$(gitstatus)%b%f%B%F{cyan} # %b%f'
+function command_not_found_handler {
+	echo "Command not found: $0"
+	return 1
+}
+
+# aliases 
+alias ls='eza -alg --git'
+alias ap='ansible-playbook'
+alias yj="ruby -e 'require \"yaml\"; require \"json\"; print YAML.load(ARGF.read).to_json'"
+alias less='less -N'
+alias cls='clear'
+alias hist='cat -n ~/.zshhistfile'
+alias tmuxh='tmux new-session \; split-window -v \; select-pane -t 0'
+alias tmuxv='tmux new-session \; split-window -h \; select-pane -t 0'
+alias tmux4='tmux new-session \; split-window -v \; split-window -h \; select-pane -t 0 \; split-window -h \; select-pane -t 0'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+alias mkdir='mkdir -v'
+alias chmod='chmod -v'
+alias chown='chown -v'
+alias chcon='chcon -v'
+alias sumcol='paste -sd+ | bc'
+alias python='python3'
+alias py='python3'
+alias fastgit='git add .; git commit -m $(date +%s); git push origin $(git branch | cut -d" " -f 2)'
+alias pullorigin='git fetch; git merge origin/$(git branch | cut -d" " -f 2) --ff-only'
+alias tmuxh='tmux new-session \; split-window -v \; select-pane -t 0'
+alias tmuxv='tmux new-session \; split-window -h \; select-pane -t 0'
+alias tmux4='tmux new-session \; split-window -v \; split-window -h \; select-pane -t 0 \; split-window -h \; select-pane -t 0'
+alias sqlite='sqlite3 -header -column'
+alias df='df -hT'
+alias ip='ip -c'
+alias gitroot='cd "$(git rev-parse --show-toplevel)"'
+
+# other env vars
+export DENO_INSTALL="$HOME/.deno"
+export EDITOR="/usr/bin/vi"
+export PATH="$HOME/.goroot/bin:$HOME/go/bin:$HOME/.cargo/bin/:$HOME/.deno/bin:$HOME/.local/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:/shared/bin:/home/janie/tmp/clang+llvm-15.0.2-x86_64-unknown-linux-gnu/bin:$PATH"
+export LESSHISTFILE="/dev/null"
+export HISTFILE=~/.zshhistfile
+export DISABLE_AUTO_TITLE="true"
+export HISTSIZE=10000
+export SAVEHIST=10000
+
+# directory shortcuts
+hash -d down=~/Downloads
+hash -d doc=~/Documents
+hash -d book=~/Documents/books
+hash -d games=~/Documents/games
+hash -d books=~/Documents/books
+hash -d pic=~/Pictures
+hash -d pics=~/Pictures
+hash -d gitlab=~/gitlab
+hash -d mutiny=~/gitlab/mutiny
+hash -d ext=/mnt/externalssd
+
+# ruby 
+type rbenv &>/dev/null
+if [ "$?" -eq "0" ]
+then
+	eval "$(rbenv init -)"
+fi
+alias rbfmt='bundle exec rubocop -a &'
+
+function title {
+	echo -n -e "\033]0;$@\007"
+	type tmux &>/dev/null
+	if [ "$?" -eq "0" ] && [ "$TMUX" != "" ]
+	then
+		tmux rename-window "$@"
+	fi
+}
+
+function ssh {
+	title "$@"
+	/usr/bin/ssh $@
+	title "$(hostname)"
+}
+
+function cd {
+	builtin cd $@
+	dir=$(print -r -- "${(D)$(pwd)}")
+	title "$(hostname) $dir"
+}
+
+function sorti {
+	ex -s +'%!sort' -cxa "$1"
+}
+
+function shellfix {
+	shellcheck --format diff --shell bash "$1" | patch -p1 "$1"
+}
+
+function gitstatus {
+	branch=$(git branch --show-current 2>/dev/null)
+	s=$(git status -s 2>/dev/null | wc -l)
+	if [ "$branch" != "" ]
+	then
+		if [ "$s" -eq "0" ]
+		then
+			s="💟"
+		else
+			s="💢"
+		fi
+		echo " $branch $s"
+	fi
+}
+
+function wg-keygen {
+	bash -c 'umask 077; wg genkey | tee privatekey | wg pubkey > publickey'
+}
+
+function enc {
+	openssl enc -aes256 -e -md sha512 -pbkdf2 -salt -in "$1" -out "$1.enc"
+}
+
+cd "$(pwd)"
+if [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]
+then
+	tmux
+fi

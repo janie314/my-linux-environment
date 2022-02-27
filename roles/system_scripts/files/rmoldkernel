@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+set -o pipefail
+dnf repoquery --installonly --latest-limit=-2 -q | xargs dnf remove -y

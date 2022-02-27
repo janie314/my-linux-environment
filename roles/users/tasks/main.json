@@ -1,0 +1,97 @@
+[{
+  "tags": "users",
+  "block": [
+    {
+      "name": "Create janie user in wheel group",
+      "ansible.builtin.user": {
+        "name": "janie",
+        "groups": [
+          "wheel"
+        ],
+        "generate_ssh_key": true,
+        "append": true,
+        "shell": "/bin/zsh",
+        "ssh_key_type": "ed25519"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "create /home/janie/.local/bin/",
+      "ansible.builtin.file": {
+        "path": "/home/janie/.local/bin/",
+        "state": "directory",
+        "mode": "0700"
+      }
+    },
+    {
+      "name": "create /home/janie/.config/",
+      "ansible.builtin.file": {
+        "path": "/home/janie/.config/",
+        "state": "directory",
+        "mode": "0755"
+      }
+    },
+    {
+      "name": "create /home/janie/.config/sway/",
+      "ansible.builtin.file": {
+        "path": "/home/janie/.config/sway/",
+        "state": "directory",
+        "mode": "0755"
+      }
+    },
+    {
+      "name": "Set root user settings",
+      "ansible.builtin.user": {
+        "name": "root",
+        "shell": "/bin/zsh"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install janie's vimrc",
+      "ansible.builtin.copy": {
+        "src": "vimrc",
+        "dest": "/home/janie/.vimrc",
+        "owner": "janie",
+        "group": "janie",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install root user's .zshrc",
+      "ansible.builtin.copy": {
+        "src": "zshrc",
+        "dest": "/root/.zshrc",
+        "owner": "root",
+        "group": "root",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install janie user's .tmux.conf",
+      "ansible.builtin.copy": {
+        "src": "tmux.conf",
+        "dest": "/home/janie/.tmux.conf",
+        "owner": "janie",
+        "group": "janie",
+        "mode": "0644",
+        "backup": "yes"
+      }
+    },
+    {
+      "name": "Install janie user's .gitconfig",
+      "ansible.builtin.copy": {
+        "src": "gitconfig",
+        "dest": "/home/janie/.gitconfig",
+        "owner": "janie",
+        "group": "janie",
+        "mode": "0644",
+        "backup": "yes"
+      }
+    }
+  ]
+}]

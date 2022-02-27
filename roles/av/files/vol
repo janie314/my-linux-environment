@@ -1,0 +1,12 @@
+#!/bin/bash
+v="";
+if [ $# -eq 0 ]
+then
+	v="100";
+elif [ "$1" = "-h" ] || [ "$1" = "--help" ]
+then
+	echo -e "Usage:\n vol [ inc ]\nExamples of 3 different types of volume increment inc:\n\tvol 85\t\tThis sets your volume to 85.\n\tvol +5\t\tthis increases your volume by 5%.\n\tvol -6\t\tthis decreases your volume by 6%."
+else
+	v=$1;
+fi
+pactl -- set-sink-volume 0 "$v"%;
