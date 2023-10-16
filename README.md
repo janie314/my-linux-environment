@@ -8,7 +8,7 @@ Groups called `servers` and `clients`.
 
 # Playbooks
 
-| Filename                    | Description                          |
-| --------------------------- | ------------------------------------ |
-| `reboot-servers.json`       | Reboot all servers.                  |
-| `server-client-config.json` | Set up servers and clients.          |
+| Filename                    | Description                 |
+| --------------------------- | --------------------------- |
+| `reboot-servers.json`       | Reboot all servers.         |
+| `server-client-config.json` | Set up servers and clients. |
