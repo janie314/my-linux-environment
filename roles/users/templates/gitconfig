@@ -25,7 +25,7 @@
   ff = only
 [global]
 	[user]
-  email = 'pub@janie.page'
+  email = '{{ email }}'
   name = '12ball'
 [color]
   ui = true
