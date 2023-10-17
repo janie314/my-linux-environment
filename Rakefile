@@ -1,5 +1,17 @@
 require "peppermint/rake/ruby"
 
+desc "limited server configuration (dry run)"
+task :limited_server_config_test do
+  sh "ansible-playbook -K --diff --check playbooks/server-limited-config.json " \
+  +"--extra-vars '@override_vars.json'
+"
+end
+
+desc "limited server configuration"
+task :limited_server_config do
+  sh "ansible-playbook -K playbooks/server-limited-config.json --extra-vars '@override_vars.json'"
+end
+
 desc "server/client configuration (dry run)"
 task :server_client_config_test do
   sh "ansible-playbook -K --diff --check playbooks/server-client-config.json"

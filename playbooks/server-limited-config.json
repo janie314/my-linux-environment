@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Jane's Playbook 4 LIMITED Server Config",
+    "hosts": "all",
+    "serial": "100%",
+    "roles": [
+      {
+        "name": "misc_utils"
+      },
+      { "name": "system_scripts" },
+      { "name": "users" }
+    ]
+  }
+]
