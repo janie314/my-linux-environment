@@ -4,10 +4,11 @@
     {
       "name": "Create janie user in wheel group",
       "ansible.builtin.user": {
-        "name": "janie",
+        "name": "{{ user }}",
         "groups": [
           "wheel"
         ],
+        "home": "{{ home_dir }}",
         "generate_ssh_key": true,
         "append": true,
         "shell": "/bin/zsh",
@@ -16,25 +17,25 @@
       "become": "yes"
     },
     {
-      "name": "create /home/janie/.local/bin/",
+      "name": "create $HOME/.local/bin/",
       "ansible.builtin.file": {
-        "path": "/home/janie/.local/bin/",
+        "path": "/home/{{ user }}/.local/bin/",
         "state": "directory",
         "mode": "0700"
       }
     },
     {
-      "name": "create /home/janie/.config/",
+      "name": "create $HOME/.config/",
       "ansible.builtin.file": {
-        "path": "/home/janie/.config/",
+        "path": "/home/{{ user }}/.config/",
         "state": "directory",
         "mode": "0755"
       }
     },
     {
-      "name": "create /home/janie/.config/sway/",
+      "name": "create $HOME/.config/sway/",
       "ansible.builtin.file": {
-        "path": "/home/janie/.config/sway/",
+        "path": "/home/{{ user }}/.config/sway/",
         "state": "directory",
         "mode": "0755"
       }
@@ -48,12 +49,12 @@
       "become": "yes"
     },
     {
-      "name": "Install janie's vimrc",
+      "name": "Install user's vimrc",
       "ansible.builtin.copy": {
         "src": "vimrc",
-        "dest": "/home/janie/.vimrc",
-        "owner": "janie",
-        "group": "janie",
+        "dest": "/home/{{ user }}/.vimrc",
+        "owner": "{{ user }}",
+        "group": "{{ user }}",
         "mode": "0644",
         "backup": "yes"
       },
@@ -72,23 +73,23 @@
       "become": "yes"
     },
     {
-      "name": "Install janie user's .tmux.conf",
+      "name": "Install user's .tmux.conf",
       "ansible.builtin.copy": {
         "src": "tmux.conf",
-        "dest": "/home/janie/.tmux.conf",
-        "owner": "janie",
-        "group": "janie",
+        "dest": "/home/{{ user }}/.tmux.conf",
+        "owner": "{{ user }}",
+        "group": "{{ user }}",
         "mode": "0644",
         "backup": "yes"
       }
     },
     {
-      "name": "Install janie user's .gitconfig",
+      "name": "Install user's .gitconfig",
       "ansible.builtin.copy": {
         "src": "gitconfig",
-        "dest": "/home/janie/.gitconfig",
-        "owner": "janie",
-        "group": "janie",
+        "dest": "/home/{{ user }}/.gitconfig",
+        "owner": "{{ user }}",
+        "group": "{{ user }}",
         "mode": "0644",
         "backup": "yes"
       }
