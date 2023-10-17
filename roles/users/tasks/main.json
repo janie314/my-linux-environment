@@ -85,7 +85,7 @@
     },
     {
       "name": "Install user's .gitconfig",
-      "ansible.builtin.copy": {
+      "ansible.builtin.template": {
         "src": "gitconfig",
         "dest": "/home/{{ user }}/.gitconfig",
         "owner": "{{ user }}",
