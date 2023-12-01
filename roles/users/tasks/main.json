@@ -59,7 +59,8 @@
         "backup": "yes"
       },
       "become": "yes"
-    },    {
+    },
+    {
       "name": "Install user's vimrc",
       "ansible.builtin.copy": {
         "src": "vimrc",

@@ -20,14 +20,20 @@
           "ed",
           "zsh",
           "git",
-          "kitty",
           "sqlite",
           "pandoc",
           "rsync",
           "tar",
           "tmux",
           "unzip",
-          "vim"
+          "vim",
+          "alacritty",
+          "clang",
+          "openssl-devel",
+          "libffi-devel",
+          "libyaml-devel",
+          "zlib-devel",
+          "perl"
         ],
         "state": "latest"
       },
