@@ -130,3 +130,13 @@ if [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]
 then
 	tmux
 fi
+
+# bun completions
+[ -s "/home/janie/.bun/_bun" ] && source "/home/janie/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.plenv/bin:$HOME/.plenv/versions/5.38.0/bin/:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
+eval "$(plenv init - zsh)"
