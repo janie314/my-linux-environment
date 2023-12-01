@@ -61,9 +61,9 @@
       "become": "yes"
     },
     {
-      "name": "Install user's vimrc",
+      "name": "Install user's zshrc",
       "ansible.builtin.copy": {
-        "src": "vimrc",
+        "src": "zshrc",
         "dest": "/home/{{ user }}/.zshrc",
         "owner": "{{ user }}",
         "group": "{{ user }}",
