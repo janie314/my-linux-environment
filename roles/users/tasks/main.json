@@ -59,7 +59,19 @@
         "backup": "yes"
       },
       "become": "yes"
+    },    {
+      "name": "Install user's vimrc",
+      "ansible.builtin.copy": {
+        "src": "vimrc",
+        "dest": "/home/{{ user }}/.zshrc",
+        "owner": "{{ user }}",
+        "group": "{{ user }}",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
     },
+
     {
       "name": "Install root user's .zshrc",
       "ansible.builtin.copy": {
