@@ -24,7 +24,6 @@
           "sqlite",
           "pandoc",
           "rsync",
-          "exa",
           "tar",
           "tmux",
           "unzip",
