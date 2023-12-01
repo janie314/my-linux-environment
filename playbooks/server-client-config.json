@@ -19,7 +19,8 @@
       { "name": "av" },
       { "name": "system_scripts" },
       { "name": "users" },
-      { "name": "rbenv" }
+      { "name": "rbenv" },
+      { "name": "alacritty" }
     ]
   }
 ]
