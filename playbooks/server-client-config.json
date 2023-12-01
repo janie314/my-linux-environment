@@ -18,7 +18,8 @@
       },
       { "name": "av" },
       { "name": "system_scripts" },
-      { "name": "users" }
+      { "name": "users" },
+      { "name": "rbenv" }
     ]
   }
 ]
