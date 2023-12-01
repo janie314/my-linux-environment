@@ -6,14 +6,15 @@
       "ansible.builtin.git": {
         "repo": "https://github.com/rbenv/rbenv.git",
         "dest": "/home/{{ user }}/.rbenv",
-		"version": "master"
+        "version": "master"
       }
-    },  {
+    },
+    {
       "name": "clone rbenv install",
       "ansible.builtin.git": {
         "repo": "https://github.com/rbenv/ruby-build.git",
         "dest": "/home/{{ user }}/.rbenv/plugins/ruby-build",
-		"version": "master"
+        "version": "master"
       }
     }
   ]

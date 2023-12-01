@@ -1,0 +1,31 @@
+[{
+  "tags": "alacritty",
+  "block": [
+    {
+      "name": "make alacritty themes directory",
+      "ansible.builtin.file": {
+        "path": "/home/{{ user }}/.config/alacritty/",
+        "state": "directory"
+      }
+    },
+    {
+      "name": "clone alacritty theme directory",
+      "ansible.builtin.git": {
+        "repo": "https://github.com/alacritty/alacritty-theme",
+        "dest": "/home/{{ user }}/.config/alacritty/themes",
+        "version": "master"
+      }
+    },
+    {
+      "name": "Install .alacritty.yml",
+      "ansible.builtin.copy": {
+        "src": "alacritty.yml",
+        "dest": "/home/{{ user }}/.alacritty.yml",
+        "owner": "{{ user }}",
+        "group": "{{ user }}",
+        "mode": "0644",
+        "backup": "yes"
+      }
+    }
+  ]
+}]
