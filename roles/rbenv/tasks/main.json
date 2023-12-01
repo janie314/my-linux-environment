@@ -1,0 +1,20 @@
+[{
+  "tags": "rbenv",
+  "block": [
+    {
+      "name": "clone rbenv",
+      "ansible.builtin.git": {
+        "repo": "https://github.com/rbenv/rbenv.git",
+        "dest": "/home/{{ user }}/.rbenv",
+		"version": "master"
+      }
+    },  {
+      "name": "clone rbenv install",
+      "ansible.builtin.git": {
+        "repo": "https://github.com/rbenv/ruby-build.git",
+        "dest": "/home/{{ user }}/.rbenv/plugins/ruby-build",
+		"version": "master"
+      }
+    }
+  ]
+}]
