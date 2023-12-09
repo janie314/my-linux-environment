@@ -6,7 +6,8 @@
       "ansible.builtin.file": {
         "path": "/home/{{ user }}/.config/alacritty/",
         "state": "directory"
-      }
+      },
+      "when": "'clients' in group_names"
     },
     {
       "name": "clone alacritty theme directory",
@@ -14,7 +15,8 @@
         "repo": "https://github.com/alacritty/alacritty-theme",
         "dest": "/home/{{ user }}/.config/alacritty/themes",
         "version": "master"
-      }
+      },
+      "when": "'clients' in group_names"
     },
     {
       "name": "Install .alacritty.yml",
@@ -25,7 +27,8 @@
         "group": "{{ user }}",
         "mode": "0644",
         "backup": "yes"
-      }
+      },
+      "when": "'clients' in group_names"
     }
   ]
 }]

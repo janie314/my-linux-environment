@@ -33,7 +33,9 @@
           "libffi-devel",
           "libyaml-devel",
           "zlib-devel",
-          "perl"
+          "perl",
+          "pam-u2f",
+          "pamu2fcfg"
         ],
         "state": "latest"
       },
