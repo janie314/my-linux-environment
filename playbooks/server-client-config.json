@@ -19,6 +19,7 @@
       { "name": "av" },
       { "name": "system_scripts" },
       { "name": "users" },
+      { "name": "auth" },
       { "name": "rbenv" },
       { "name": "alacritty" }
     ]

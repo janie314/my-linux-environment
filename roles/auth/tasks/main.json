@@ -1,0 +1,101 @@
+[{
+  "tags": "auth",
+  "block": [
+    {
+      "name": "Install u2f-sufficient pam file",
+      "ansible.builtin.copy": {
+        "src": "u2f-sufficient",
+        "dest": "/etc/pam.d/u2f-sufficient",
+        "owner": "root",
+        "group": "root",
+        "seuser": "system_u",
+        "serole": "object_r",
+        "setype": "etc_t",
+        "selevel": "s0",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install kde pam file",
+      "ansible.builtin.copy": {
+        "src": "kde",
+        "dest": "/etc/pam.d/kde",
+        "owner": "root",
+        "group": "root",
+        "seuser": "system_u",
+        "serole": "object_r",
+        "setype": "etc_t",
+        "selevel": "s0",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install sudo pam file",
+      "ansible.builtin.copy": {
+        "src": "sudo",
+        "dest": "/etc/pam.d/sudo",
+        "owner": "root",
+        "group": "root",
+        "seuser": "system_u",
+        "serole": "object_r",
+        "setype": "etc_t",
+        "selevel": "s0",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install sudo-i pam file",
+      "ansible.builtin.copy": {
+        "src": "sudo-i",
+        "dest": "/etc/pam.d/sudo-i",
+        "owner": "root",
+        "group": "root",
+        "seuser": "system_u",
+        "serole": "object_r",
+        "setype": "etc_t",
+        "selevel": "s0",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install login pam file",
+      "ansible.builtin.copy": {
+        "src": "login",
+        "dest": "/etc/pam.d/login",
+        "owner": "root",
+        "group": "root",
+        "seuser": "system_u",
+        "serole": "object_r",
+        "setype": "etc_t",
+        "selevel": "s0",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
+    },
+    {
+      "name": "Install sddm-greeter pam file",
+      "ansible.builtin.copy": {
+        "src": "sddm-greeter",
+        "dest": "/etc/pam.d/sddm-greeter",
+        "owner": "root",
+        "group": "root",
+        "seuser": "system_u",
+        "serole": "object_r",
+        "setype": "etc_t",
+        "selevel": "s0",
+        "mode": "0644",
+        "backup": "yes"
+      },
+      "become": "yes"
+    }
+  ]
+}]
