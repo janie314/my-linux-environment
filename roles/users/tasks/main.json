@@ -41,6 +41,14 @@
       }
     },
     {
+      "name": "create $HOME/.config/mpv/",
+      "ansible.builtin.file": {
+        "path": "/home/{{ user }}/.config/mpv/",
+        "state": "directory",
+        "mode": "0755"
+      }
+    },
+    {
       "name": "Set root user settings",
       "ansible.builtin.user": {
         "name": "root",
@@ -101,6 +109,17 @@
       "ansible.builtin.template": {
         "src": "gitconfig",
         "dest": "/home/{{ user }}/.gitconfig",
+        "owner": "{{ user }}",
+        "group": "{{ user }}",
+        "mode": "0644",
+        "backup": "yes"
+      }
+    },
+    {
+      "name": "Install user's mpv.conf",
+      "ansible.builtin.copy": {
+        "src": "mpv.conf",
+        "dest": "/home/{{ user }}/.config/mpv/mpv.conf",
         "owner": "{{ user }}",
         "group": "{{ user }}",
         "mode": "0644",

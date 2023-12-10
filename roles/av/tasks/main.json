@@ -63,7 +63,6 @@
       "when": "ansible_facts['os_family']|lower == 'gentoo'",
       "become": "yes"
     },
-
     {
       "name": "Install sway config",
       "ansible.builtin.copy": {

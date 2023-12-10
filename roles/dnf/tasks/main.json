@@ -23,6 +23,7 @@
           "sqlite",
           "pandoc",
           "rsync",
+          "mpv",
           "tar",
           "tmux",
           "unzip",
