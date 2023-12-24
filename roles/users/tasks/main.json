@@ -49,14 +49,6 @@
       }
     },
     {
-      "name": "Set root user settings",
-      "ansible.builtin.user": {
-        "name": "root",
-        "shell": "/bin/zsh"
-      },
-      "become": "yes"
-    },
-    {
       "name": "Install user's vimrc",
       "ansible.builtin.copy": {
         "src": "vimrc",
@@ -75,19 +67,6 @@
         "dest": "/home/{{ user }}/.zshrc",
         "owner": "{{ user }}",
         "group": "{{ user }}",
-        "mode": "0644",
-        "backup": "yes"
-      },
-      "become": "yes"
-    },
-
-    {
-      "name": "Install root user's .zshrc",
-      "ansible.builtin.copy": {
-        "src": "zshrc",
-        "dest": "/root/.zshrc",
-        "owner": "root",
-        "group": "root",
         "mode": "0644",
         "backup": "yes"
       },
