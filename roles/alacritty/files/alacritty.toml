@@ -1,0 +1,6 @@
+import = [
+ "~/.config/alacritty/themes/themes/carbonfox.toml"
+]
+
+[font]
+size = 12

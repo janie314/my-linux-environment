@@ -21,8 +21,8 @@
     {
       "name": "Install .alacritty.yml",
       "ansible.builtin.copy": {
-        "src": "alacritty.yml",
-        "dest": "/home/{{ user }}/.alacritty.yml",
+        "src": "alacritty.toml",
+        "dest": "/home/{{ user }}/.config/alacritty/alacritty.toml",
         "owner": "{{ user }}",
         "group": "{{ user }}",
         "mode": "0644",
