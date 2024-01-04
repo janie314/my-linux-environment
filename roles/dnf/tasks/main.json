@@ -26,6 +26,8 @@
           "mpv",
           "tar",
           "tmux",
+          "shellcheck",
+          "patch",
           "unzip",
           "vim",
           "calibre",
