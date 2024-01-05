@@ -45,6 +45,17 @@
       },
       "become": "yes",
       "when": "ansible_facts['os_family']|lower == 'redhat'"
+    },
+    {
+      "name": "Install DNF packages for clients",
+      "ansible.builtin.package": {
+        "name": [
+          "keepassxc"
+        ],
+        "state": "latest"
+      },
+      "become": "yes",
+      "when": "'clients' in group_names"
     }
   ]
 }]
