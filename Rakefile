@@ -9,7 +9,8 @@ end
 
 desc "limited server configuration"
 task :limited_server_config do
-  sh "ansible-playbook --ask-vault-pass playbooks/server-limited-config.json --extra-vars '@override_vars.json'"
+  sh "ansible-playbook --ask-vault-pass playbooks/server-limited-config.json " \
+  +"--extra-vars '@override_vars.json'"
 end
 
 desc "server/client configuration (dry run)"
