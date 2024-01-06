@@ -2,7 +2,6 @@
   {
     "name": "Jane's Playbook 4 Server and Client Config",
     "hosts": "all",
-    "serial": "100%",
     "roles": [
       {
         "name": "dnf"
@@ -18,6 +17,7 @@
       { "name": "users" },
       { "name": "auth" },
       { "name": "rbenv" },
+      { "name": "deno" },
       { "name": "alacritty" }
     ]
   }

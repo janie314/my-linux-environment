@@ -1,0 +1,23 @@
+[{
+  "tags": "deno",
+  "block": [
+    {
+      "name": "check if deno exists",
+      "ansible.builtin.shell": "which deno",
+      "register": "deno_installed",
+      "failed_when": false,
+      "changed_when": false
+    },
+    {
+      "name": "install deno",
+      "ansible.builtin.shell": "bash -c \"curl -fsSL https://deno.land/install.sh | sh\"",
+      "register": "install_deno",
+      "when": "deno_installed.rc != \"0\""
+    },
+    {
+      "name": "upgrade deno",
+      "ansible.builtin.shell": "deno upgrade",
+      "when": "deno_installed.rc == \"0\""
+    }
+  ]
+}]
