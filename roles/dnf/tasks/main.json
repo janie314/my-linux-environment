@@ -31,6 +31,7 @@
           "unzip",
           "vim",
           "calibre",
+          "wireguard-tools",
           "alacritty",
           "clang",
           "openssl-devel",
@@ -50,7 +51,8 @@
       "name": "Install DNF packages for clients",
       "ansible.builtin.package": {
         "name": [
-          "keepassxc"
+          "keepassxc",
+          "transmission"
         ],
         "state": "latest"
       },
