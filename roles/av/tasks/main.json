@@ -12,19 +12,10 @@
         "append": true
       },
       "become": "yes",
-      "when": "ansible_facts['os_family']|lower == 'gentoo'"
-    },
-    {
-      "name": "Install light",
-      "ansible.builtin.copy": {
-        "src": "light",
-        "dest": "/usr/local/bin/light",
-        "owner": "root",
-        "group": "root",
-        "mode": "0755",
-        "backup": "yes"
-      },
-      "become": "yes"
+      "when": [
+        "ansible_facts['os_family']|lower == 'gentoo'",
+        "'clients' in group_names"
+      ]
     },
     {
       "name": "Install stereo",
@@ -36,19 +27,11 @@
         "mode": "0755",
         "backup": "yes"
       },
-      "become": "yes"
-    },
-    {
-      "name": "Install vol",
-      "ansible.builtin.copy": {
-        "src": "vol",
-        "dest": "/usr/local/bin/vol",
-        "owner": "root",
-        "group": "root",
-        "mode": "0755",
-        "backup": "yes"
-      },
-      "become": "yes"
+      "become": "yes",
+      "when": [
+        "ansible_facts['os_family']|lower == 'gentoo'",
+        "'clients' in group_names"
+      ]
     },
     {
       "name": "Install greetd config",
@@ -60,7 +43,10 @@
         "mode": "0644",
         "backup": "yes"
       },
-      "when": "ansible_facts['os_family']|lower == 'gentoo'",
+      "when": [
+        "ansible_facts['os_family']|lower == 'gentoo'",
+        "'clients' in group_names"
+      ],
       "become": "yes"
     },
     {
@@ -74,7 +60,10 @@
         "backup": "yes"
       },
       "become": "yes",
-      "when": "ansible_facts['os_family']|lower == 'gentoo'"
+      "when": [
+        "ansible_facts['os_family']|lower == 'gentoo'",
+        "'clients' in group_names"
+      ]
     }
   ]
 }]

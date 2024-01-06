@@ -13,9 +13,6 @@
       {
         "name": "chronyd"
       },
-      {
-        "name": "misc_utils"
-      },
       { "name": "av" },
       { "name": "system_scripts" },
       { "name": "users" },

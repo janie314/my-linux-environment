@@ -61,7 +61,7 @@ hash -d games=~/Documents/games
 hash -d books=~/Documents/books
 hash -d pic=~/Pictures
 hash -d pics=~/Pictures
-hash -d gitlab=~/gitlab
+hash -d git=~/git
 hash -d mutiny=~/gitlab/mutiny
 hash -d ext=/mnt/externalssd
 
