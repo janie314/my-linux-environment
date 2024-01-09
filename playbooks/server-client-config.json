@@ -2,6 +2,7 @@
   {
     "name": "Jane's Playbook 4 Server and Client Config",
     "hosts": "all",
+    "strategy": "free",
     "roles": [
       {
         "name": "dnf"
