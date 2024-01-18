@@ -2,7 +2,7 @@
   {
     "name": "Jane's Playbook 4 Server and Client Config",
     "hosts": "all",
-    "serial": "100%",
+    "strategy": "free",
     "roles": [
       {
         "name": "dnf"
@@ -13,14 +13,12 @@
       {
         "name": "chronyd"
       },
-      {
-        "name": "misc_utils"
-      },
       { "name": "av" },
       { "name": "system_scripts" },
       { "name": "users" },
       { "name": "auth" },
       { "name": "rbenv" },
+      { "name": "deno" },
       { "name": "alacritty" }
     ]
   }

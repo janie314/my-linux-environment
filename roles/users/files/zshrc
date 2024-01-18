@@ -61,7 +61,7 @@ hash -d games=~/Documents/games
 hash -d books=~/Documents/books
 hash -d pic=~/Pictures
 hash -d pics=~/Pictures
-hash -d gitlab=~/gitlab
+hash -d git=~/git
 hash -d mutiny=~/gitlab/mutiny
 hash -d ext=/mnt/externalssd
 
@@ -131,3 +131,22 @@ then
 	tmux
 fi
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/home/janie/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# bun completions
+[ -s "/home/janie/.bun/_bun" ] && source "/home/janie/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

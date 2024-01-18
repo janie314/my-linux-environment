@@ -30,9 +30,7 @@
           "patch",
           "unzip",
           "vim",
-          "calibre",
           "wireguard-tools",
-          "alacritty",
           "clang",
           "openssl-devel",
           "libffi-devel",
@@ -52,6 +50,8 @@
       "ansible.builtin.package": {
         "name": [
           "keepassxc",
+          "calibre",
+          "alacritty",
           "transmission"
         ],
         "state": "latest"

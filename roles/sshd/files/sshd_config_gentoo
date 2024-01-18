@@ -9,7 +9,7 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 X11Forwarding no
 PrintMotd no
-AllowUsers gwen janie git
+AllowUsers gwen janie git gnuplex
 Subsystem sftp /usr/lib64/misc/sftp-server
 
 Include /etc/ssh/sshd_config.d/*.conf
